@@ -1,10 +1,10 @@
 import BigNumber from 'bignumber.js'
 import { MasterNodeRegTestContainer } from '@defichain/testcontainers'
 import { JsonRpcClient } from '@defichain/jellyfish-api-jsonrpc'
-import { PoolPairInfo } from '@defichain/jellyfish-api-core'
 import { OP_CODES } from '../src/script'
-import { decodeAsEllipticPair, HASH160 } from '@defichain/jellyfish-crypto'
+import { WIF, HASH160 } from '@defichain/jellyfish-crypto'
 import { broadcastTx, createTx, signTx, setupVin } from './craft_utility'
+import { PoolPairInfo } from '@defichain/jellyfish-api-core/dist/category/poolpair'
 
 const container = new MasterNodeRegTestContainer()
 let client: JsonRpcClient
@@ -68,7 +68,7 @@ async function getTokenNum (symbol: string): Promise<number> {
 
 it('should PoolAddLiquidity with custom tx created with buffer', async () => {
   await setupPair('PAL')
-  const ellipticPair = decodeAsEllipticPair('cQSsfYvYkK5tx3u1ByK2ywTTc9xJrREc1dd67ZrJqJUEMwgktPWN')
+  const ellipticPair = WIF.asEllipticPair('cQSsfYvYkK5tx3u1ByK2ywTTc9xJrREc1dd67ZrJqJUEMwgktPWN')
   const vin = await setupVin(ellipticPair, container)
 
   // TODO(fuxingloh): wait for canonbrother PR

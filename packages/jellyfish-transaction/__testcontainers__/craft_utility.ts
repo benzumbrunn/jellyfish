@@ -7,7 +7,7 @@ import {
   TransactionSigner
 } from '../src'
 import { OP_CODES } from '../src/script'
-import { EllipticPair, HASH160, toBech32 } from '@defichain/jellyfish-crypto'
+import { EllipticPair, HASH160, Bech32 } from '@defichain/jellyfish-crypto'
 import { SmartBuffer } from 'smart-buffer'
 import { JsonRpcClient } from '@defichain/jellyfish-api-jsonrpc'
 import { MasterNodeRegTestContainer } from '@defichain/testcontainers'
@@ -20,7 +20,7 @@ export interface CraftInput {
 }
 
 export async function setupVin (ellipticPair: EllipticPair, container: MasterNodeRegTestContainer): Promise<CraftInput> {
-  const address = toBech32(await ellipticPair.publicKey(), 'bcrt')
+  const address = Bech32.fromPubKey(await ellipticPair.publicKey(), 'bcrt')
 
   const amount = new BigNumber(10)
   const { txid, vout } = await container.fundAddress(address, amount.toNumber())
