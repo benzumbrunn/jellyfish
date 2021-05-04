@@ -92,7 +92,7 @@ async function tryPullImage (docker: Dockerode): Promise<void> {
 export abstract class DeFiDContainer {
   /* eslint-disable @typescript-eslint/no-non-null-assertion, no-void */
   public static readonly PREFIX = 'defichain-testcontainers-'
-  public static readonly image = 'defi/defichain:1.6.3'
+  public static readonly image = 'defi/defichain:1.7.x-f9d277c'
 
   public static readonly DefaultStartOptions = {
     user: 'testcontainers-user',
