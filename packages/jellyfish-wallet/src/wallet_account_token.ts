@@ -13,19 +13,7 @@ export class WalletAccountToken {
 
   }
 
-  async accountToAccount (): Promise<void> {
+  async accountToAccount (address: string, tokenId: number, amount: BigNumber): Promise<void> {
 
   }
-
-  async listTokens (size: number): Promise<void> {
-
-  }
-
-  async getTokenBalance (symbol: string): Promise<TokenBalance> {
-
-  }
-}
-
-export interface TokenBalance {
-  symbol: string
 }

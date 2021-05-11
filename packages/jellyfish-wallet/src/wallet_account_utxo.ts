@@ -8,8 +8,4 @@ export class WalletAccountUtxo {
   async send (address: string, amount: BigNumber) {
 
   }
-
-  async getBalance (): Promise<BigNumber> {
-
-  }
 }

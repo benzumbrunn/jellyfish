@@ -1,3 +1,4 @@
+import BigNumber from "bignumber.js";
 import { Script } from "@defichain/jellyfish-transaction";
 import { OP_CODES } from "@defichain/jellyfish-transaction/dist/script";
 import { WalletHdNode } from './wallet_hd_node'
@@ -63,7 +64,7 @@ export abstract class WalletAccount {
 export interface WalletAccountUnspent {
   txid: string
   n: number
-  value: string
+  value: BigNumber
 }
 
 /**
