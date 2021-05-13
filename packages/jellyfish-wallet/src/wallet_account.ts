@@ -1,11 +1,11 @@
-import BigNumber from "bignumber.js";
-import { Script } from "@defichain/jellyfish-transaction";
-import { OP_CODES } from "@defichain/jellyfish-transaction/dist/script";
+import BigNumber from 'bignumber.js'
+import { Script } from '@defichain/jellyfish-transaction'
+import { OP_CODES } from '@defichain/jellyfish-transaction/dist/script'
 import { WalletHdNode } from './wallet_hd_node'
-import { WalletAccountDex } from "./wallet_account_dex";
-import { WalletAccountToken } from "./wallet_account_token";
-import { Bech32, HASH160, HRP } from "@defichain/jellyfish-crypto";
-import { WalletAccountUtxo } from "./wallet_account_utxo";
+import { WalletAccountDex } from './wallet_account_dex'
+import { WalletAccountToken } from './wallet_account_token'
+import { Bech32, HASH160, HRP } from '@defichain/jellyfish-crypto'
+import { WalletAccountUtxo } from './wallet_account_utxo'
 
 /**
  * An HDW is organized as several 'accounts'.
@@ -17,12 +17,12 @@ import { WalletAccountUtxo } from "./wallet_account_utxo";
 export abstract class WalletAccount {
   private readonly hdNode: WalletHdNode
   private readonly hrp: HRP
-  public readonly utxo = new WalletAccountUtxo(this);
-  public readonly dex = new WalletAccountDex(this);
-  public readonly token = new WalletAccountToken(this);
+  public readonly dex = new WalletAccountDex(this)
+  public readonly token = new WalletAccountToken(this)
+  public readonly utxo = new WalletAccountUtxo(this)
 
   protected constructor (hdNode: WalletHdNode, hrp: HRP) {
-    this.hdNode = hdNode;
+    this.hdNode = hdNode
     this.hrp = hrp
   }
 
